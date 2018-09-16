@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="">
+<html lang="da">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,13 +8,123 @@
     <link rel="stylesheet" href="css.css">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet">
     <style>
-        img{
+        body {
+            background-color: #bb766d;
+        }
+
+        header{
+            position: relative;
+        }
+
+        article {
+            padding: 2em;
+        }
+
+        .data_container article img {
             width: 100%;
+        }
+
+        .data_container {
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+
+        @media screen and (min-width:760px){
+            .data_container{
+                display: grid;
+                grid-template-columns: 1fr 1fr 1fr;
+            }
+        }
+
+        span {
+            font-family: 'helvetica';
+            text-transform: capitalize;
+            font-size: 1.5em;
+        }
+
+        #modal {
+            background-color: rgba(0, 0, 0, .7);
+            height: 100vh;
+            width: 100vw;
+            position: fixed;
+            text-align: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: 1s;
+        }
+
+        #modal_content {
+            background-color: #667a6f;
+            width: 70vw;
+            height: 80vh;
+            margin: auto;
+        }
+
+        #modal.vis {
+            opacity: 4;
+            pointer-events: all;
+            transition: 0.7s;
+        }
+
+        .modal_navn{
+            font-size: 2em;
+        }
+
+        .navn {
+            font-size: 2em;
+        }
+
+        .knapper{
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+        }
+
+        .menu_item {
+            font-size: 1.7em;
+            background-color: #bb766d;
+            font-family: 'Open Sans Condensed', sans-serif;
+            cursor: pointer;
+            border: none;
+            justify-self: end;
+            padding: 1em;
+            width: 100%;
+        }
+
+        .menu_item:hover{
+            color: gray;
+        }
+
+        .close {
+            font-size: 1.7em;
+            background-color: #B6C9D7;
+            font-family: 'Open Sans Condensed', sans-serif;
+            cursor: pointer;
+            border: none;
+            justify-self: end;
+            padding: 1em;
+        }
+
+        h1{
+            background-color: #bb766d;
+            margin: 0;
+            padding: 1em;
         }
     </style>
 </head>
 
 <body>
+    <section id="modal">
+        <button class="close">Close</button>
+        <div id="modal_content">
+            <h2 class="modal_navn"></h2><br>
+            <img class="modal_billede" src="" alt=""><br>
+            <span class="modal_kategori"></span><br>
+            <span class="modal_kortbeskrivelse"></span><br>
+            <span class="modal_pris"></span>
+        </div>
+    </section>
+
     <div class="burgermenu">
         <img class="nav_burger_logo" src="website_billeder/nav_logo.svg" alt="nav_logo">
         <button class="burger">
@@ -23,105 +134,51 @@
         </button>
     </div>
 
-    <section id="modal">
-        <button>CLOSE</button>
-        <div id="modal_content">
-            <h2 class="modal_navn"></h2><br>
-            <img class="modal_billede" src="" alt=""><br>
-            <span class="modal"></span>
-        </div>
-    </section>
     <header>
-
         <nav>
             <ul>
-                <li>HOME</li>
-                <li>ABOUT</li>
+                <a href="index.html">
+                    <li>HOME</li>
+                </a>
+                <a href="index.html">
+                    <li>ABOUT</li>
+                </a>
                 <img class="nav_logo" src="website_billeder/nav_logo.svg" alt="nav_logo">
-                <li>MENU</li>
-                <li>CONTACT</li>
+                <a href="index.html">
+                    <li>MENU</li>
+                </a>
+                <a href="index.html">
+                    <li>CONTACT</li>
+                </a>
             </ul>
         </nav>
-        <h1></h1>
     </header>
+
+    <main class="container">
+        <section id="sorteringsknapper">
+           <h1></h1>
+           <div class="knapper">
+            <button class="menu_item" data_kategori="alle">Alle</button>
+            <button class="menu_item" data_kategori="bruschetta">Bruschettas</button>
+            <button class="menu_item" data_kategori="pizza">Pizzas</button>
+            <button class="menu_item" data_kategori="sorbet">Sorbet</button>
+            <button class="menu_item" data_kategori="prosecco">Proseccas</button>
+            </div>
+        </section>
+        <section class="data_container"></section>
+    </main>
 
     <template class="ret_template">
         <article>
             <h2 class="navn"></h2><br>
             <img src="" alt=""><br>
+            <span class="kategori"></span><br>
             <span class="kortbeskrivelse"></span><br>
-            Pris: <span class="pris"></span>
+            <span class="pris"></span>
         </article>
     </template>
 
-    <main class="container">
-       <section class="data_container"></section>
-    </main>
 
-    <script>
-        let retter;
-        let destination=document.querySelector(".data_container");
-        let retFilter="alle";
-        let modal=document.querySelector("#modal");
-
-        document.addEventListener("DOMContentLoaded", hentJson);
-
-        async function hentJson(){
-            console.log("jsonHentet");
-
-            let myJson=await fetch("csvjson.json");
-            retter=await myJson.json();
-            visRetter();
-        }
-
-        document.querySelectorAll("menu_item").forEach(knap=>{
-            knap.addEventListener("click", filtrering);
-        })
-
-        function filtrering(){
-            destination.textContent="";
-            retFilter=this.getAttribute("data-kategori");
-            visRetter();
-        }
-
-        function visRetter(){
-            console.log("hentRetter");
-
-            let template=document.querySelector(".ret_template");
-            let destination=document.querySelector(".data_conatiner");
-            document.querySelector("header h1").textContent=retFilter;
-
-            retter.forEach(ret=>{
-                if(ret.kategori==retFilter||retFilter=="alle"){
-                    let klon=template.cloneNode(true).content;
-                    klon.querySelector("h2").textContent=ret.navn;
-                    klon.querySelector("img").src="website_billeder/imgs/" + ret.billede;
-                    //MODAL start
-                    klon.querySelector("img").addEventListener("click", ()=>{
-                        visModal(ret);
-                    })
-                    //modal slut
-
-                    klon.querySelector(".kortbeskrivelse").textContent = ret.kortbeskrivelse;
-                    klon.querySelector(".pris").textContent=ret.pris;
-                    destination.appendChild(klon);}
-            })
-        }
-
-        //modal start
-        function visModal(retten){
-            modal.classList.add("vis");
-            modal.querySelector(".modal_navn").textContent=retten.navn;
-
-            modal.querySelector("button").addEventListener("click", skjulModal);
-        }
-
-        function skjulModal(){
-            modal.classList.remove("vis");
-        }
-
-        //modal slut
-    </script>
 
     <footer>
         <div class="contact">
@@ -137,5 +194,86 @@
             <p1>Søndag: Closed</p1>
         </div>
     </footer>
+
+    <script>
+        function onLoad() {
+
+
+
+            function toggleMenu() {
+                document.querySelector(".burger").classList.toggle("change");
+                document.querySelector("nav").classList.toggle("show");
+            }
+            document.querySelector(".burger").addEventListener("click", toggleMenu);
+            document.querySelector("ul").addEventListener("click", toggleMenu);
+
+        }
+
+
+        document.addEventListener("DOMContentLoaded", function(event) {
+            onLoad();
+        });
+
+        //modal:
+        let destination = document.querySelector(".data_container");
+        let retter;
+        let retFilter = "alle";
+        let modal = document.querySelector("#modal");
+
+        document.addEventListener("DOMContentLoaded", hentJson);
+
+        async function hentJson() {
+            console.log("jsonHentet");
+            let myJson = await fetch("csvjson.json");
+            retter = await myJson.json();
+            visRetter();
+        }
+
+        document.querySelectorAll(".menu_item").forEach(knap => {
+            knap.addEventListener("click", filtrering);
+        });
+
+        function filtrering() {
+            destination.textContent = "";
+            retFilter = this.getAttribute("data_kategori");
+            visRetter();
+        }
+
+        function visRetter() {
+            let template = document.querySelector(".ret_template");
+            document.querySelector("#sorteringsknapper h1").textContent = retFilter;
+            retter.forEach(ret => {
+                if (ret.kategori == retFilter || retFilter == "alle") {
+                    let klon = template.cloneNode(true).content;
+                    klon.querySelector("h2").textContent = ret.navn;
+                    klon.querySelector("img").src = "menu/" + ret.billede;
+                    klon.querySelector("img").addEventListener("click", () => {
+                        visModal(ret);
+                    })
+                    klon.querySelector(".kategori").textContent = ret.kategori;
+                    klon.querySelector(".kortbeskrivelse").textContent = ret.kortbeskrivelse;
+                    klon.querySelector(".pris").textContent = "Pris: " + ret.pris;
+                    destination.appendChild(klon);
+                }
+            })
+        }
+
+        function visModal(retten) {
+            modal.classList.add("vis");
+            modal.querySelector(".modal_navn").textContent = retten.navn;
+            modal.querySelector(".modal_billede").src = "menu/" + retten.billede;
+            modal.querySelector(".modal_billede").alt = retten.billede;
+            modal.querySelector(".modal_kategori").textContent = retten.kategori;
+            modal.querySelector(".modal_kortbeskrivelse").textContent = retten.kortbeskrivelse;
+            modal.querySelector(".modal_pris").textContent = "Pris: " + retten.pris;
+
+            modal.querySelector("button").addEventListener("click", skjulModal);
+        }
+
+        function skjulModal() {
+            modal.classList.remove("vis");
+        }
+    </script>
 </body>
+
 </html>
