@@ -1,0 +1,142 @@
+[
+  {
+    "navn": "Bruschetta Tomato",
+    "pris": 60,
+    "billede": "tomato_bruschetta.jpg",
+    "kategori": "bruschetta",
+    "kortbeskrivelse": "Bruschetta smurt i hvidløg, med ost, tomater og basillikum."
+  },
+  {
+    "navn": "Bruschetta Prosciutto",
+    "pris": 60,
+    "billede": "parma_bruschetta.jpg",
+    "kategori": "bruschetta",
+    "kortbeskrivelse": "Bruschetta smurt i hvidløg, med smurt ost, prosciutto og basillikum."
+  },
+  {
+    "navn": "Bruschetta goatcheese",
+    "pris": 60,
+    "billede": "goadcheese_bruschetta.jpg",
+    "kategori": "bruschetta",
+    "kortbeskrivelse": "Bruschetta smurt i hvidløg, med gedeost, figner, timian og balsamicoolie."
+  },
+  {
+    "navn": "Bruschetta Shrimp",
+    "pris": 60,
+    "billede": "mushroom_bruschretta.jpg",
+    "kategori": "bruschetta",
+    "kortbeskrivelse": "Bruschetta smurt i hvidløg, med stegte svampe og persille."
+  },
+  {
+    "navn": "Pizza Pepperoni",
+    "pris": 110,
+    "billede": "pepperoni.png",
+    "kategori": "pizza",
+    "kortbeskrivelse": "Pizza med tomat, ost, pepperoni, ost, og kerne banding."
+  },
+  {
+    "navn": "Pizza Magaritta",
+    "pris": 90,
+    "billede": "magaritta.png",
+    "kategori": "pizza",
+    "kortbeskrivelse": "Pizza med tomat, ost, oregano og parmasan."
+  },
+  {
+    "navn": "Pizza White Cheese",
+    "pris": 110,
+    "billede": "whitecheese.png",
+    "kategori": "pizza",
+    "kortbeskrivelse": "Pizza med mascarpone, olivenolie og rosmarin."
+  },
+  {
+    "navn": "Pizza Spinach",
+    "pris": 110,
+    "billede": "spinach.png",
+    "kategori": "pizza",
+    "kortbeskrivelse": "Pizza med spinnat, artskot, parmasan, ost og evt. chili."
+  },
+  {
+    "navn": "Pizza Squash",
+    "pris": 110,
+    "billede": "squash.png",
+    "kategori": "pizza",
+    "kortbeskrivelse": "Pizza med ost, squash, chili, pebermynte."
+  },
+  {
+    "navn": "Pizza Garlic",
+    "pris": 110,
+    "billede": "garlic.png",
+    "kategori": "pizza",
+    "kortbeskrivelse": "Pizza med ost, persille, hvidløg i olie og evt. Chili olie."
+  },
+  {
+    "navn": "Pizza Chili Meet",
+    "pris": 110,
+    "billede": "chilimeet.png",
+    "kategori": "pizza",
+    "kortbeskrivelse": "Pizza med kødstrimler, ost, champignon, chili, parmasan."
+  },
+  {
+    "navn": "Pizza Pink Onien",
+    "pris": 110,
+    "billede": "pinkonion.png",
+    "kategori": "pizza",
+    "kortbeskrivelse": "Pizza med ost, spinnat, syltede løg, asparges og evt. jalapenos."
+  },
+  {
+    "navn": "Lemon Sorbet",
+    "pris": 50,
+    "billede": "lemon_sorbet.jpg",
+    "kategori": "sorbet",
+    "kortbeskrivelse": "En rørt mørk chokoladesorbet med mynteblade."
+  },
+  {
+    "navn": "Strawberry Sorbet",
+    "pris": 50,
+    "billede": "jordbær_sorbet.jpg",
+    "kategori": "sorbet",
+    "kortbeskrivelse": "En rørt jordbærsorbet med mynteblade."
+  },
+  {
+    "navn": "Schocolate Sorbet",
+    "pris": 50,
+    "billede": "chokolade_sorbet.jpg",
+    "kategori": "sorbet",
+    "kortbeskrivelse": "En rørt citronsorbet med mynteblade."
+  },
+  {
+    "navn": "Pizzolato",
+    "pris": 149,
+    "billede": "",
+    "kategori": "prosecco",
+    "kortbeskrivelse": "PIZZOLATO PROSECCO FRIZZANTE ØKO : Italiensk mousserende vin. Lavet i Veneto med druesorten 100% Glera. Anbefales til Aperitif, brunch, lette retter, fisk og skaldyr."
+  },
+  {
+    "navn": "La Marca",
+    "pris": 189,
+    "billede": "",
+    "kategori": "prosecco",
+    "kortbeskrivelse": "LA MARCA PROSECCO DOC TREVISO EXTRA DRY: Italiensk mousserende vin. Lavet i Veneto med druesorten 100% Prosecco. Anbefales til Aperitif og velkomst."
+  },
+  {
+    "navn": "Nino Franko Brut",
+    "pris": 219,
+    "billede": "",
+    "kategori": "prosecco",
+    "kortbeskrivelse": "NINO FRANCO BRUT VALDOBBIADENE PROSECCO SUPERIORE: Italiensk mousserende vin. Lavet i Veneto med druesorten 100% Glera. Anbefales til Aperitif, grønsagsretter, ost."
+  },
+  {
+    "navn": "Nino Franko Nodi",
+    "pris": 249,
+    "billede": "",
+    "kategori": "prosecco",
+    "kortbeskrivelse": "2015 NINO FRANCO NODI VALDOBBIADENE PROSECCO SUPERIORE: Italiensk mousserende vin. Lavet i Veneto med druesorten 100% Glera. Anbefales til Apuetirif, grøntsagsretter, ost."
+  },
+  {
+    "navn": "Nino Franko Grave",
+    "pris": 309,
+    "billede": "",
+    "kategori": "prosecco",
+    "kortbeskrivelse": "2012 NINO FRANCO GRAVE DI STECCA PROSECCO: Italiensk mousserende vin. Lavet i Veneto med druesorten 100% Glera. Anbefales til Aperitif, grøntsagsretter, ost."
+  }
+]

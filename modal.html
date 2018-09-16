@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pizza &amp; Prosecco</title>
+    <link rel="stylesheet" href="css.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet">
+    <style>
+        img{
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="burgermenu">
+        <img class="nav_burger_logo" src="website_billeder/nav_logo.svg" alt="nav_logo">
+        <button class="burger">
+            <div class="bar1"></div>
+            <div class="bar2"></div>
+            <div class="bar3"></div>
+        </button>
+    </div>
+
+    <section id="modal">
+        <button>CLOSE</button>
+        <div id="modal_content">
+            <h2 class="modal_navn"></h2><br>
+            <img class="modal_billede" src="" alt=""><br>
+            <span class="modal"></span>
+        </div>
+    </section>
+    <header>
+
+        <nav>
+            <ul>
+                <li>HOME</li>
+                <li>ABOUT</li>
+                <img class="nav_logo" src="website_billeder/nav_logo.svg" alt="nav_logo">
+                <li>MENU</li>
+                <li>CONTACT</li>
+            </ul>
+        </nav>
+        <h1></h1>
+    </header>
+
+    <template class="ret_template">
+        <article>
+            <h2 class="navn"></h2><br>
+            <img src="" alt=""><br>
+            <span class="kortbeskrivelse"></span><br>
+            Pris: <span class="pris"></span>
+        </article>
+    </template>
+
+    <main class="container">
+       <section class="data_container"></section>
+    </main>
+
+    <script>
+        let retter;
+        let destination=document.querySelector(".data_container");
+        let retFilter="alle";
+        let modal=document.querySelector("#modal");
+
+        document.addEventListener("DOMContentLoaded", hentJson);
+
+        async function hentJson(){
+            console.log("jsonHentet");
+
+            let myJson=await fetch("csvjson.json");
+            retter=await myJson.json();
+            visRetter();
+        }
+
+        document.querySelectorAll("menu_item").forEach(knap=>{
+            knap.addEventListener("click", filtrering);
+        })
+
+        function filtrering(){
+            destination.textContent="";
+            retFilter=this.getAttribute("data-kategori");
+            visRetter();
+        }
+
+        function visRetter(){
+            console.log("hentRetter");
+
+            let template=document.querySelector(".ret_template");
+            let destination=document.querySelector(".data_conatiner");
+            document.querySelector("header h1").textContent=retFilter;
+
+            retter.forEach(ret=>{
+                if(ret.kategori==retFilter||retFilter=="alle"){
+                    let klon=template.cloneNode(true).content;
+                    klon.querySelector("h2").textContent=ret.navn;
+                    klon.querySelector("img").src="website_billeder/imgs/" + ret.billede;
+                    //MODAL start
+                    klon.querySelector("img").addEventListener("click", ()=>{
+                        visModal(ret);
+                    })
+                    //modal slut
+
+                    klon.querySelector(".kortbeskrivelse").textContent = ret.kortbeskrivelse;
+                    klon.querySelector(".pris").textContent=ret.pris;
+                    destination.appendChild(klon);}
+            })
+        }
+
+        //modal start
+        function visModal(retten){
+            modal.classList.add("vis");
+            modal.querySelector(".modal_navn").textContent=retten.navn;
+
+            modal.querySelector("button").addEventListener("click", skjulModal);
+        }
+
+        function skjulModal(){
+            modal.classList.remove("vis");
+        }
+
+        //modal slut
+    </script>
+
+    <footer>
+        <div class="contact">
+            <h2>CONTACT</h2>
+            <p1>Tlf: 12345678</p1><br>
+            <p1>Mail: 1234@link.dk</p1><br>
+            <pr>Adresse: Melongade 7b</pr>
+        </div>
+        <div class="openinghours">
+            <h2>OPENING HOURS</h2>
+            <p1>Mandag-Torsdag: 17-22</p1><br>
+            <p1>Fredag-Lørdag: 17-24</p1><br>
+            <p1>Søndag: Closed</p1>
+        </div>
+    </footer>
+</body>
+</html>

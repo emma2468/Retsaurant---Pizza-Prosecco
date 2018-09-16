@@ -1,0 +1,197 @@
+:root {
+    font-size: 62.5%
+}
+
+body {
+    margin: 0;
+}
+
+/*NAVIGATIONS BAR*/
+header {
+    display: grid;
+    background-color: #B6C9D7;
+    position: fixed;
+    width: 100%;
+
+}
+
+.burgermenu {
+    background-color: #B6C9D7;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.burger {
+    cursor: pointer;
+    background: #B6C9D7;
+    border: none;
+    justify-self: end;
+    padding: 1em;
+}
+
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-rows: repeat(4, 1fr);
+}
+
+.nav_logo {
+    width: 30px;
+    display: none;
+
+}
+
+.nav_burger_logo {
+    width: 60px;
+}
+
+li {
+    padding: 1em;
+    cursor: pointer;
+    text-align: center;
+    font-family: 'Open Sans Condensed', sans-serif;
+    text-decoration: none;
+    color: black;
+    font-size: 2em;
+}
+
+.bar1,
+.bar2,
+.bar3 {
+    width: 30px;
+    height: 1px;
+    background-color: black;
+    margin: 6px 0;
+    transition: 0.4s;
+}
+
+nav {
+    max-height: 0px;
+    overflow: hidden;
+    transition: 0s;
+    table-layout: red;
+    color: blue;
+}
+
+
+
+nav.show {
+    max-height: 500px;
+}
+
+.change .bar1 {
+    transform: rotate(-45deg) translate(-2px, 6px);
+}
+
+.change .bar2 {
+    opacity: 0;
+}
+
+.change .bar3 {
+    transform: rotate(45deg) translate(-4px, -8px);
+}
+
+@media screen and (min-width:768px) {
+    .burger {
+        display: none;
+    }
+
+    nav {
+        max-height: 200px;
+        display: grid;
+        grid-template-columns: repeat (6, 1fr);
+    }
+
+    li {
+        display: inline-block;
+    }
+
+    .nav_logo {
+        width: 80px;
+        display: block;
+        justify-self: center;
+    }
+
+    .burgermenu {
+        display: none;
+    }
+
+    ul{
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        grid-template-rows: 1fr;
+    }
+}
+
+/*Splash og logo*/
+
+img{
+    width: 100%;
+}
+
+/*About section*/
+
+h1{
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-size: 30px;
+    text-align: center;
+}
+
+p{
+    font-family: 'helvetica';
+    font-weight: 100;
+}
+
+.about{
+    max-width: 60%;
+    margin: 0 auto;
+}
+
+/*Pizza party section*/
+
+.about_party{
+    background-color: #bca099;
+    max-width: 60%;
+    margin: 0 auto;
+}
+
+.background_party{
+    background-color: #bca099;
+    padding-top: 2em;
+    padding-bottom: 3em;
+}
+
+/*billedegalleri section*/
+
+.billeder{
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+}
+
+/*footer*/
+
+footer{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background-color: #667a6f;
+}
+
+h2{
+    font-family: 'Open Sans Condensed', sans-serif;
+}
+
+.contact{
+    padding: 2em;
+}
+
+.openinghours{
+    padding: 2em;
+}
+
+p1{
+    font-family: 'helvetica';
+    font-weight: 100;
+}
