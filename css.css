@@ -103,9 +103,6 @@ nav.show {
         grid-template-columns: repeat (6, 1fr);
     }
 
-    li {
-        display: inline-block;
-    }
 
     .nav_logo {
         width: 80px;
