@@ -6,6 +6,14 @@ body {
     margin: 0;
 }
 
+@media screen and (min-width:1200px){
+    .index_main{
+    margin-left: 30em;
+    margin-right: 30em;
+}
+}
+
+
 /*NAVIGATIONS BAR*/
 header {
     display: grid;

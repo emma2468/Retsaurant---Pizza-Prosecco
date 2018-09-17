@@ -104,6 +104,7 @@
             border: none;
             justify-self: end;
             padding: 1em;
+            margin-top: 4em;
         }
 
         h1 {
@@ -129,7 +130,7 @@
 
         @media screen and (min-width:591px){
             #modal_content {
-                height: 65vh;}
+                height: 70vh;}
         }
 
         @media screen and (min-width:1280px){
@@ -137,26 +138,19 @@
                 grid-template-columns: 1fr 1fr 1fr 1fr;
             }
         }
+
+        @media screen and (min-width:1366px){
+            .container{
+                padding-left: 30em;
+                padding-right: 30em;
+            }
+
+        }
     </style>
 </head>
 
 <body>
-    <section id="modal">
-        <button class="close">Close</button>
-        <div id="modal_content">
-            <h2 class="modal_navn"></h2><br>
-            <div class="modal_grid">
-                <div class="modal_billede_content">
-                    <img class="modal_billede" src="" alt=""><br>
-                </div>
-                <div class="modal_span_content">
-                    <span class="modal_kategori"></span><br>
-                    <span class="modal_kortbeskrivelse"></span><br>
-                    <span class="modal_pris"></span>
-                </div>
-            </div>
-        </div>
-    </section>
+
 
     <div class="burgermenu">
         <img class="nav_burger_logo" src="website_billeder/nav_logo.svg" alt="nav_logo">
@@ -188,6 +182,23 @@
     </header>
 
     <main class="container">
+       <section id="modal">
+        <button class="close">Close</button>
+        <div id="modal_content">
+            <h2 class="modal_navn"></h2><br>
+            <div class="modal_grid">
+                <div class="modal_billede_content">
+                    <img class="modal_billede" src="" alt=""><br>
+                </div>
+                <div class="modal_span_content">
+                    <span class="modal_kategori"></span><br>
+                    <span class="modal_kortbeskrivelse"></span><br>
+                    <span class="modal_pris"></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
         <section id="sorteringsknapper">
             <h1></h1>
             <div class="knapper">
@@ -199,9 +210,8 @@
             </div>
         </section>
         <section class="data_container"></section>
-    </main>
 
-    <template class="ret_template">
+         <template class="ret_template">
         <article>
             <h2 class="navn"></h2><br>
             <img src="" alt=""><br>
@@ -210,6 +220,9 @@
             <span class="pris"></span>
         </article>
     </template>
+    </main>
+
+
 
 
 
