@@ -1,6 +1,5 @@
+//Script til burgermenu
 function onLoad() {
-
-   // if (window.innerWidth <= 768) {
 
     function toggleMenu() {
         document.querySelector(".burger").classList.toggle("change");
@@ -10,8 +9,8 @@ function onLoad() {
     document.querySelector("ul").addEventListener("click", toggleMenu);
 
      }
-//}
 
+//Vil først starte når DOM-indholdet er loaded
 document.addEventListener("DOMContentLoaded", function (event) {
     onLoad();
 });

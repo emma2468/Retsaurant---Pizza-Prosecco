@@ -7,6 +7,7 @@
     <title>Pizza &amp; Prosecco</title>
     <link rel="stylesheet" href="css.css">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet">
+    <!--    Style af menu vindue.-->
     <style>
         body {
             background-color: #bb766d;
@@ -124,42 +125,44 @@
             }
 
             #modal_content {
-            height: 70vh;
-        }
+                height: 70vh;
+            }
         }
 
-        @media screen and (min-width:591px){
+        @media screen and (min-width:591px) {
             #modal_content {
-                height: 70vh;}
+                height: 70vh;
+            }
         }
 
-        @media screen and (min-width:1280px){
+        @media screen and (min-width:1280px) {
             .data_container {
                 grid-template-columns: 1fr 1fr 1fr 1fr;
             }
         }
 
-        @media screen and (min-width:1366px){
-            .container{
+        @media screen and (min-width:1366px) {
+            .container {
                 padding-left: 30em;
                 padding-right: 30em;
             }
 
             #modal {
-            height: 100vh;
-                width: 116vh;}
+                height: 100vh;
+                width: 116vh;
+            }
 
             #modal_content {
-            width: 50vw;
-            height: 55vh;
+                width: 50vw;
+                height: 55vh;
 
-        }
+            }
+
     </style>
 </head>
 
 <body>
-
-
+    <!--   Navigationsbaren når sitet er på tablet- eller mobilesite.-->
     <div class="burgermenu">
         <img class="nav_burger_logo" src="website_billeder/nav_logo.svg" alt="nav_logo">
         <button class="burger">
@@ -170,6 +173,7 @@
     </div>
 
     <header>
+        <!--Navigationsbaren på laptop-->
         <nav>
             <ul>
                 <a href="index.html">
@@ -190,23 +194,24 @@
     </header>
 
     <main class="container">
-       <section id="modal">
-        <button class="close">Close</button>
-        <div id="modal_content">
-            <h2 class="modal_navn"></h2><br>
-            <div class="modal_grid">
-                <div class="modal_billede_content">
-                    <img class="modal_billede" src="" alt=""><br>
-                </div>
-                <div class="modal_span_content">
-                    <span class="modal_kategori"></span><br>
-                    <span class="modal_kortbeskrivelse"></span><br>
-                    <span class="modal_pris"></span>
+        <!--       Modalvindue. Skjult, men vises, når et ret vælges.-->
+        <section id="modal">
+            <button class="close">Close</button>
+            <div id="modal_content">
+                <h2 class="modal_navn"></h2><br>
+                <div class="modal_grid">
+                    <div class="modal_billede_content">
+                        <img class="modal_billede" src="" alt=""><br>
+                    </div>
+                    <div class="modal_span_content">
+                        <span class="modal_kategori"></span><br>
+                        <span class="modal_kortbeskrivelse"></span><br>
+                        <span class="modal_pris"></span>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
-
+        </section>
+        <!--Knapper til at sortere kategorierne på menuen-->
         <section id="sorteringsknapper">
             <h1></h1>
             <div class="knapper">
@@ -218,22 +223,18 @@
             </div>
         </section>
         <section class="data_container"></section>
-
-         <template class="ret_template">
-        <article>
-            <h2 class="navn"></h2><br>
-            <img src="" alt=""><br>
-            <span class="kategori"></span><br>
-            <span class="kortbeskrivelse"></span><br>
-            <span class="pris"></span>
-        </article>
-    </template>
+        <!--Template til visning af den enkelte ret.-->
+        <template class="ret_template">
+            <article>
+                <h2 class="navn"></h2><br>
+                <img src="" alt=""><br>
+                <span class="kategori"></span><br>
+                <span class="kortbeskrivelse"></span><br>
+                <span class="pris"></span>
+            </article>
+        </template>
     </main>
-
-
-
-
-
+    <!--    Footeren til visning af kontaktoplysninger.-->
     <footer id="footer">
         <div class="contact">
             <h2>CONTACT</h2>
@@ -250,9 +251,8 @@
     </footer>
 
     <script>
+        //Script til burgermenu
         function onLoad() {
-
-
 
             function toggleMenu() {
                 document.querySelector(".burger").classList.toggle("change");
@@ -263,19 +263,25 @@
 
         }
 
-
+        //Vil først starte når DOM-indholdet er loaded
         document.addEventListener("DOMContentLoaded", function(event) {
             onLoad();
         });
 
         //modal:
+        //destination er det DOM-element, retten skal vises i
         let destination = document.querySelector(".data_container");
+        //variabel til indlæsning af retter
         let retter;
+        //variabel der viser hvislen værdi der filtreres på.
         let retFilter = "alle";
+        //modal er det DOM-element, den enkelte ret bliver vist i
         let modal = document.querySelector("#modal");
 
+        //Vil først starte når DOM-indholdet er loaded
         document.addEventListener("DOMContentLoaded", hentJson);
 
+        //Henter json til indhold af menu
         async function hentJson() {
             console.log("jsonHentet");
             let myJson = await fetch("csvjson.json");
@@ -283,19 +289,24 @@
             visRetter();
         }
 
+        //kalder .menu_item i html, og lader det ske for hver af .menu_item's
         document.querySelectorAll(".menu_item").forEach(knap => {
             knap.addEventListener("click", filtrering);
         });
-
+        //filtreing af kategorierne, når man klikker på hver .menu_item
         function filtrering() {
             destination.textContent = "";
             retFilter = this.getAttribute("data_kategori");
             visRetter();
         }
 
+        //funtion til at vise indhloldet (retterne) fra json filen.
         function visRetter() {
+            //variable der kalder .ret_template fra html
             let template = document.querySelector(".ret_template");
+            //viser overskrift fra hver kategori der findes i json
             document.querySelector("#sorteringsknapper h1").textContent = retFilter;
+            //Forklare hvad der skal vises af hver ret fra json
             retter.forEach(ret => {
                 if (ret.kategori == retFilter || retFilter == "alle") {
                     let klon = template.cloneNode(true).content;
@@ -312,7 +323,9 @@
             })
         }
 
+        //funktion til at beskrive hvad der skal vises i selve modalvinduet
         function visModal(retten) {
+            //elementer fra json
             modal.classList.add("vis");
             modal.querySelector(".modal_navn").textContent = retten.navn;
             modal.querySelector(".modal_billede").src = "menu/" + retten.billede;
@@ -320,13 +333,14 @@
             modal.querySelector(".modal_kategori").textContent = retten.kategori;
             modal.querySelector(".modal_kortbeskrivelse").textContent = retten.kortbeskrivelse;
             modal.querySelector(".modal_pris").textContent = "Pris: " + retten.pris;
-
+            //kalder at modal vinduet skal skjules når man klikker på button
             modal.querySelector("button").addEventListener("click", skjulModal);
         }
-
+        //fundtion til at skjule modalvinduet
         function skjulModal() {
             modal.classList.remove("vis");
         }
+
     </script>
 </body>
 
